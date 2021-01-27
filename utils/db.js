@@ -1,9 +1,8 @@
-import mongo, { MongoClient } from "mongodb";
+import { MongoClient } from 'mongodb';
 
-
-const host = process.env.DB_HOST || "localhost";
+const host = process.env.DB_HOST || 'localhost';
 const port = process.env.DB_PORT || 27017;
-const database = process.env.DB_DATABASE || "files_manager";
+const database = process.env.DB_DATABASE || 'files_manager';
 
 const url = `mongodb://${host}:${port}/`;
 
@@ -14,8 +13,8 @@ class DBClient {
       if (error) console.log(error);
       // console.log("Connection Succesful");
       this.db = client.db(database);
-      this.db.createCollection("users");
-      this.db.createCollection("files");
+      this.db.createCollection('users');
+      this.db.createCollection('files');
       // console.log("Database connected");
       // client.close();
     });
