@@ -12,11 +12,11 @@ class DBClient {
     this.db = null;
     MongoClient.connect(url, { useUnifiedTopology: true }, (error, client) => {
       if (error) console.log(error);
-      console.log("Connection Succesful");
+      // console.log("Connection Succesful");
       this.db = client.db(database);
       this.db.createCollection("users");
       this.db.createCollection("files");
-      console.log("Database connected");
+      // console.log("Database connected");
       // client.close();
     });
   }
