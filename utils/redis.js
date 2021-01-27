@@ -5,9 +5,9 @@ class RedisClient {
   constructor() {
     // Create objs
     this.client = redis.createClient();
-        /*     this.client.on('error', (error) => {
-      console.error(`Redis client not connected to the server: ${error.message}`);
-      }); */
+    /*     this.client.on('error', (error) => {
+   console.error(`Redis client not connected to the server: ${error.message}`);
+   }); */
 
     this.clientGet = promisify(this.client.get).bind(this.client);
     this.clientSet = promisify(this.client.set).bind(this.client);
