@@ -1,12 +1,14 @@
 import express from "express";
+import { getStats, getStatus } from "../controllers/AppController";
+import AppController from "../controllers/AppController";
+
 const app = express();
-import { appController } from "../controllers/AppController";
+const router = express.Router();
 
+function routeController() {
+  router.get("/status", getStatus);
 
-app.get("/stats", (req, res) => {
-  res.send('hujdfgas');
-});
+  router.get("/stats", getStats);
+}
 
-app.get("/status", (req, res) => {
-  res.send('hujdfgas');
-});
+export default routeController;
