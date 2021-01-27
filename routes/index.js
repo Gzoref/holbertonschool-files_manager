@@ -2,13 +2,20 @@ import express from "express";
 import { getStats, getStatus } from "../controllers/AppController";
 import AppController from "../controllers/AppController";
 
-const app = express();
 const router = express.Router();
 
-function routeController() {
-  router.get("/status", getStatus);
+const routeController = (app) => {
+  app.use('/', router);
 
-  router.get("/stats", getStats);
+  // App Controller
+
+  router.get('/status', (req, res) => {
+    AppController.getStatus(req, res);
+  });
+
+  router.get('/stats', (req, res) => {
+    AppController.getStats(req, res);
+  });
 }
 
 export default routeController;
