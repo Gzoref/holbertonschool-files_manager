@@ -2,8 +2,8 @@ import express from 'express';
 // import AppController, { getStats, getStatus } from '../controllers/AppController';
 import AppController from '../controllers/AppController';
 
-const getStats = AppController.getStats();
-const getStatus = AppController.getStatus();
+const getStats = AppController.getStats(); /* eslint-disable-line no-unused-vars */
+const getStatus = AppController.getStatus(); /* eslint-disable-line no-unused-vars */
 
 const router = express.Router();
 
