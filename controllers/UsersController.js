@@ -5,14 +5,14 @@ import crypto from 'crypto';
 const hash = crypto.getHashes();
 
 class UsersController {
-  constructor(email, password) {
-    this.email = email;
-    this.password = password;
-  }
   static postNew(request, response) {
-    if (!this.email)
-      response.status(400).send('<issing email');
-    if (!this.password)
+    const email = request.body.email;
+    const password = request.body.password;
+    console.log("EMAIL", email, "PASSWORD", password);
+    response.json({email, password});
+    if (!email)
+      response.status(400).send('Missing email');
+    if (!password)
       response.status(400).send('Missing password');
 
     try {
@@ -24,7 +24,7 @@ class UsersController {
     }
     const hashPwd = crypto.createHash('sha1').update(this.password).digest('hex');
     // const key = {'email': this.email};
-    const newUser = users.update({'email': this.email}, {'password': hashPwd}, upsert=true);
+    users.update({'email': this.email}, {'password': hashPwd}, upsert=true);
     response.status(201).send({newUser});
   }
 }

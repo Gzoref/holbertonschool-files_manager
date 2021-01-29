@@ -22,7 +22,7 @@ const routeController = (app) => {
   });
 
   router.post('/users', (req, res) => {
-    UsersController.postNew(email, password);
+    UsersController.postNew(req, res);
   });
 };
 
