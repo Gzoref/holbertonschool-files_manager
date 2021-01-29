@@ -22,7 +22,7 @@ class UsersController {
       } else {
         collection.insertOne({ email, password: hashPwd });
         const newUser = await collection.findOne({ email }, { projection: { email: 1 } });
-        response.status(200).send(newUser);
+        response.status(201).send(newUser);
       }
     } catch (error) {
       console.log(error);
