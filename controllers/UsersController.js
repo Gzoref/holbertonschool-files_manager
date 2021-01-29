@@ -5,10 +5,10 @@ class UsersController {
   static async postNew(request, response) {
     const { email, password } = request.body;
     if (!email) {
-      response.status(400).send('Missing email');
+      response.status(400).json({ error: 'Missing email' });
     }
     if (!password) {
-      response.status(400).send('Missing password');
+      response.status(400).json({ error: 'Missing password' });
     }
 
     const hashPwd = sha1(password);
