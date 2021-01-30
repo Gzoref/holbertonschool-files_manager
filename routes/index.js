@@ -1,10 +1,7 @@
 import express from 'express';
-// import AppController, { getStats, getStatus } from '../controllers/AppController';
 import AppController from '../controllers/AppController';
-// const getStats = AppController.getStats(); /* eslint-disable-line no-unused-vars */
-// const getStatus = AppController.getStatus(); /* eslint-disable-line no-unused-vars */
-
 import UsersController from '../controllers/UsersController';
+import AuthController from '../controllers/AuthController';
 
 const router = express.Router();
 
@@ -26,11 +23,11 @@ const routeController = (app) => {
   });
 
   router.get('/connect', (req, res) => {
-    AppController.getConnect(req, res);
+    AuthController.getConnect(req, res);
   });
 
   router.get('/disconnect', (req, res) => {
-    AppController.getDisconnect(req, res);
+    AuthController.getDisconnect(req, res);
   });
 
   router.get('/users/me', (req, res) => {
