@@ -25,7 +25,7 @@ class UsersController {
           { email },
           { projection: { email: 1 } },
         );
-        response.status(201).json({ id: newUser._id, email });
+        response.status(201).json({ id: newUser._id, email: newUser.email });
       }
     } catch (error) {
       console.log(error);
