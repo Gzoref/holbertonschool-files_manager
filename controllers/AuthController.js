@@ -1,6 +1,6 @@
 import sha1 from 'sha1';
 import dbClient from '../utils/db';
-import basicAuth from 'express-basic-auth';
+import basicAuth from 'basic-auth';
 
 
 class AuthController {
@@ -12,7 +12,7 @@ class AuthController {
     }
     const auth =  new Buffer(authHeader.split(' ')[1], 'base64').toString().split(':');
     const email = auth[0];
-    const pass = sha1(auth[1];)
+    const pass = sha1(auth[1]);
 
     try {
 
@@ -22,4 +22,4 @@ class AuthController {
   }
 }
 
-export default UsersController;
+export default AuthController;

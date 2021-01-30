@@ -21,7 +21,7 @@ const routeController = (app) => {
   router.post('/users', (req, res) => {
     UsersController.postNew(req, res);
   });
-
+/* 
   router.get('/connect', (req, res) => {
     AuthController.getConnect(req, res);
   });
@@ -32,7 +32,7 @@ const routeController = (app) => {
 
   router.get('/users/me', (req, res) => {
     UserController.getMe(req, res);
-  });
+  }); */
 };
 
 export default routeController;
