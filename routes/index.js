@@ -24,6 +24,18 @@ const routeController = (app) => {
   router.post('/users', (req, res) => {
     UsersController.postNew(req, res);
   });
+
+  router.get('/connect', (req, res) => {
+    AppController.getConnect(req, res);
+  });
+
+  router.get('/disconnect', (req, res) => {
+    AppController.getDisconnect(req, res);
+  });
+
+  router.get('/users/me', (req, res) => {
+    UserController.getMe(req, res);
+  });
 };
 
 export default routeController;
