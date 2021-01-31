@@ -1,7 +1,7 @@
 import express from 'express';
 import AppController from '../controllers/AppController';
 import UsersController from '../controllers/UsersController';
-/* import AuthController from '../controllers/AuthController'; */
+import AuthController from '../controllers/AuthController';
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ const routeController = (app) => {
   router.post('/users', (req, res) => {
     UsersController.postNew(req, res);
   });
-/*
+
   router.get('/connect', (req, res) => {
     AuthController.getConnect(req, res);
   });
@@ -31,8 +31,8 @@ const routeController = (app) => {
   });
 
   router.get('/users/me', (req, res) => {
-    UserController.getMe(req, res);
-  }); */
+    UsersController.getMe(req, res);
+  });
 };
 
 export default routeController;
