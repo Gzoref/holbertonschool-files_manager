@@ -36,13 +36,14 @@ class UsersController {
   static async getMe(request, response) {
     const userToken = request.header('X-Token');
     const authKey = `auth_${userToken}`;
-    console.log('USER TOKEN GET ME', userToken);
-    const user = await redisClient.get(authKey);
-    console.log('USER KEY', user);
-    if (!user) {
+    // console.log('USER TOKEN GET ME', userToken);
+    const userKey = await redisClient.get(authKey);
+    // console.log('USER KEY GET ME', userKey);
+    if (!userKey) {
       response.status(401).json({ error: 'Unauthorized' });
     }
-    // const user = await redisClient.get(userKey);
+    const user = await redisClient.get(`auth_${userKey}`);
+    // console.log('USER GET ME', user);
     response.json({ id: user._id, email: user.email });
   }
 }

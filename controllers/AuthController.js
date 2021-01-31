@@ -22,14 +22,14 @@ class AuthController {
 
   static async getDisconnect(request, response) {
     const userToken = request.header('X-Token');
-    console.log('USER TOKEN DISCONNECT', userToken);
+    // console.log('USER TOKEN DISCONNECT', userToken);
     const userKey = await redisClient.get(`auth_${userToken}`);
-    console.log('USER KEY DISCONNECT', userKey);
+    // console.log('USER KEY DISCONNECT', userKey);
     if (!userKey) {
       response.status(401).json({ error: 'Unauthorized' });
     }
     await redisClient.del(`auth_${userToken}`);
-    response.status(200).send('DISCONNECTED');
+    response.status(204).send('DISCONNECTED');
   }
 }
 
