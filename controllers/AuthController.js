@@ -7,7 +7,7 @@ class AuthController {
   static async getConnect(request, response) {
     const authHeader = request.headers.authorization;
     if (!authHeader) {
-      response.status(401).json({ error: 'Unauthorized AUTH 1' });
+      response.status(401).json({ error: 'Unauthorized' });
     }
     try {
       const auth = Buffer.from(authHeader.split(' ')[1], 'base64').toString().split(':');
@@ -18,7 +18,7 @@ class AuthController {
       console.log('USER IN AUTH GETCONNECT()', user);
 
       if (!user || pass !== user.password) {
-        response.status(401).json({ error: 'Unauthorized AUTH 2' });
+        response.status(401).json({ error: 'Unauthorized' });
       }
 
       const token = uuidv4();
@@ -40,7 +40,7 @@ class AuthController {
       const userKey = await redisClient.get(`auth_${userToken}`);
       // console.log('USER KEY DISCONNECT', userKey);
       if (!userKey) {
-        response.status(401).json({ error: 'Unauthorized AUTH 3' });
+	response.status(401).json({ error: 'Unauthorized' });
       }
       await redisClient.del(`auth_${userToken}`);
       response.status(204).send('DISCONNECTED');
