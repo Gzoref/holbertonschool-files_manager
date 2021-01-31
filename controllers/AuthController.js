@@ -40,7 +40,7 @@ class AuthController {
       const userKey = await redisClient.get(`auth_${userToken}`);
       // console.log('USER KEY DISCONNECT', userKey);
       if (!userKey) {
-	response.status(401).json({ error: 'Unauthorized' });
+        response.status(401).json({ error: 'Unauthorized' });
       }
       await redisClient.del(`auth_${userToken}`);
       response.status(204).send('DISCONNECTED');
