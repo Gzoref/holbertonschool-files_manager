@@ -34,9 +34,9 @@ const routeController = (app) => {
     UsersController.getMe(req, res);
   });
 
-  router.post('/files', (req, res) => {
-    FilesController.postUpload(req, res);
-  });
+  // router.post('/files', (req, res) => {
+  //   FilesController.postUpload(req, res);
+  // });
 };
 
 export default routeController;
