@@ -33,6 +33,10 @@ const routeController = (app) => {
   router.get('/users/me', (req, res) => {
     UsersController.getMe(req, res);
   });
+
+  router.post('/files', (req, res) => {
+    FilesController.postUpload(req, res);
+  });
 };
 
 export default routeController;

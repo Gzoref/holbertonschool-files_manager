@@ -15,7 +15,7 @@ class AuthController {
       const pass = sha1(auth[1]);
 
       const user = await dbClient.getUser({ email });
-      console.log('USER IN AUTH GETCONNECT()', user);
+      // console.log('USER IN AUTH GETCONNECT()', user);
 
       if (!user || pass !== user.password) {
         response.status(401).json({ error: 'Unauthorized' });
@@ -43,7 +43,7 @@ class AuthController {
         response.status(401).json({ error: 'Unauthorized' });
       }
       await redisClient.del(`auth_${userToken}`);
-      response.status(204).send('DISCONNECTED');
+      response.status(204);
     } catch (err) {
       console.log(err);
       response.status(500).json({ error: 'Server error' });
